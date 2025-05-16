@@ -16,9 +16,16 @@ venv\Scripts\activate # On Linux, use source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
+4. Create a .env file to insert your Token Key. Don't forget this step, otherwise the script won't run. In the .env file, follow the syntax below:
+```bash
+TOKEN_KEY = {"Your Token Key Here"}
+```
 
 ## How to use
 To run the ```script.py```, certify that you have installed all the necessary dependencies and execute the following command:
 ```bash
 python script.py
 ```
+After completing all the necessary setup, the script should be ready to run. First, it scrapes the target webpage and retrieves the desired image. Then, the image is encoded in base64 and sent to the model API using a specific prompt to generate a detailed caption.
+
+The model returns a JSON response containing the image description. Finally, this response is submitted — without any modifications — to the evaluation API provided as part of the challenge.
