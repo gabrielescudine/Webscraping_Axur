@@ -3,10 +3,15 @@
 # I will upload this code on my GitHub repository, you can check it out at: https://github.com/gabrielescudine/Webscraping_Axur
 # I'll try to explain the code as much as possible.
 
-import requests
-import base64
+import os
 import json
+import base64
+import requests
+from dotenv import load_dotenv
 from bs4 import BeautifulSoup
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Scraping and Model Configuration:
 
@@ -20,7 +25,11 @@ inference_api = "https://intern.aiaxuropenings.com/v1/chat/completions"
 submit_url = "https://intern.aiaxuropenings.com/api/submit-response"
 
 # Token for authentication
-TOKEN = "LkBsJDMERPm2uFoESRo9SrUSOQrwvPWH"
+TOKEN = os.getenv("TOKEN_KEY") # Don't forget to set your token in the .env file
+
+if not TOKEN:
+    print("Please set the TOKEN_KEY in your .env file.")
+    exit()
 
 # Model name for this task
 model = "microsoft/Florence-2-large"
